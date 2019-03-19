@@ -43,7 +43,18 @@ namespace NumbersGame
             return array;
         }//end of Populate
 
-
+        static int GetSum(int[] array)
+        {
+            int sum = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                sum = array[i] + sum;
+            }
+            if (sum < 20) {
+                throw new Exception("Value of sum is too low");
+            }
+            return sum;
+        }
             
     }//end of class
 }
