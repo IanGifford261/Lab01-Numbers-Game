@@ -37,8 +37,8 @@ namespace NumbersGame
 
                 Console.WriteLine($"Please enter a number {i + 1} of {array.Length}");
                 string userResponse = Console.ReadLine();
-                int numero = Convert.ToInt32(userResponse);
-                array[i] = numero;
+                int number = Convert.ToInt32(userResponse);
+                array[i] = number;
             }
             return array;
         }//end of Populate
@@ -55,6 +55,18 @@ namespace NumbersGame
             }
             return sum;
         }
-            
+
+        static int GetProduct(int[] array, int sum)
+        {
+            Console.WriteLine($"Please select a random number between one and {array.Length}");
+            string userResponse = Console.ReadLine();
+            int number = Convert.ToInt32(userResponse);
+
+            int product = 0;
+            product = sum * array[number - 1];
+
+            return product;
+        }
+        
     }//end of class
 }
