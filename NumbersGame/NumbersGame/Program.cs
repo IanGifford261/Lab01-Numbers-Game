@@ -30,16 +30,20 @@ namespace NumbersGame
 
         }//end of StartSequence
 
-        static int Populate(int[] args)
+        static int[] Populate(int[] array)
         {
-            for (int i = 0; i < args.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                Console.WriteLine("Please enter a number 1 of 6");
+
+                Console.WriteLine($"Please enter a number {i + 1} of {array.Length}");
                 string userResponse = Console.ReadLine();
                 int numero = Convert.ToInt32(userResponse);
-
+                array[i] = numero;
             }
-        }
+            return array;
+        }//end of Populate
+
+
             
     }//end of class
 }
