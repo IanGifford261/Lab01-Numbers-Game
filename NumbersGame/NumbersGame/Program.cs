@@ -14,7 +14,9 @@ namespace NumbersGame
 
         } //end of Main
 
-        //StartSequence method with logic
+        /// <summary>
+        /// StartSequence method with logic
+        /// </summary>
         static void StartSequence()
         {
             //Prompt to do the thingy
@@ -27,6 +29,11 @@ namespace NumbersGame
             int[] newArray = new int[number];
             //Calls Populate method
             Populate(newArray);
+            //Stores and Calls Methods
+            int returnSum = GetSum(newArray);
+            int returnProduct = GetProduct(newArray, returnSum);
+            int returnQuotient = GetQuotient()
+
 
         }//end of StartSequence
 
@@ -34,7 +41,6 @@ namespace NumbersGame
         {
             for (int i = 0; i < array.Length; i++)
             {
-
                 Console.WriteLine($"Please enter a number {i + 1} of {array.Length}");
                 string userResponse = Console.ReadLine();
                 int number = Convert.ToInt32(userResponse);
@@ -58,14 +64,29 @@ namespace NumbersGame
 
         static int GetProduct(int[] array, int sum)
         {
-            Console.WriteLine($"Please select a random number between one and {array.Length}");
-            string userResponse = Console.ReadLine();
-            int number = Convert.ToInt32(userResponse);
+            try
+            {
+                Console.WriteLine($"Please select a random number between one and {array.Length}");
+                string userResponse = Console.ReadLine();
+                int number = Convert.ToInt32(userResponse);
 
-            int product = 0;
-            product = sum * array[number - 1];
+                int product = 0;
+                product = sum * array[number - 1];
 
-            return product;
+                return product;
+            }
+            catch(IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        static decimal GetQuotient(int product)
+        {
+            Console.WriteLine($"Please enter a number to divide by {product}");
+
+
         }
         
     }//end of class
