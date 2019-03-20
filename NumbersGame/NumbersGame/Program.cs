@@ -7,11 +7,22 @@ namespace NumbersGame
         static void Main(string[] args)
         {
             Console.WriteLine("Numbers Game Yay! but lets break it");
-
-            //StartSequence method called
-            StartSequence();
-            Console.WriteLine();
-
+            try
+            {
+                //StartSequence method called
+                StartSequence();
+                Console.WriteLine();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("There was an error in your input");
+                Console.WriteLine(e);
+            }
+            finally
+            {
+                Console.WriteLine("Application has run");
+                Console.ReadLine();
+            }
         } //end of Main
 
         /// <summary>
@@ -32,7 +43,7 @@ namespace NumbersGame
             //Stores and Calls Methods
             int returnSum = GetSum(newArray);
             int returnProduct = GetProduct(newArray, returnSum);
-            int returnQuotient = GetQuotient()
+            decimal returnQuotient = GetQuotient(returnProduct);
 
 
         }//end of StartSequence
@@ -84,9 +95,22 @@ namespace NumbersGame
 
         static decimal GetQuotient(int product)
         {
-            Console.WriteLine($"Please enter a number to divide by {product}");
+            try
+            {
+                Console.WriteLine($"Please enter a number to divide by {product}");
+                string userResponse = Console.ReadLine();
+                int number = Convert.ToInt32(userResponse);
 
+                decimal quotient = 0;
+                quotient = Decimal.Divide(product, number);
 
+                return quotient;
+            }
+            catch(DivideByZeroException e)
+            {
+                Console.WriteLine(e);
+                return 0;
+            }
         }
         
     }//end of class
