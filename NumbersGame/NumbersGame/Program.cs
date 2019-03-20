@@ -30,20 +30,38 @@ namespace NumbersGame
         /// </summary>
         static void StartSequence()
         {
-            //Prompt to do the thingy
-            Console.WriteLine("Enter a Number greater than Zero if you are a hero");
-            //User input
-            string userResponse = Console.ReadLine();
-            //Conversion from a string to an integer
-            int number = Convert.ToInt32(userResponse);
-            //Instantiate a new integer array
-            int[] newArray = new int[number];
-            //Calls Populate method
-            Populate(newArray);
-            //Stores and Calls Methods
-            int returnSum = GetSum(newArray);
-            int returnProduct = GetProduct(newArray, returnSum);
-            decimal returnQuotient = GetQuotient(returnProduct);
+            try
+            {
+                //Prompt to do the thingy
+                Console.WriteLine("Enter a Number greater than Zero if you are a hero");
+                //User input
+                string userResponse = Console.ReadLine();
+                //Conversion from a string to an integer
+                int number = Convert.ToInt32(userResponse);
+                //Instantiate a new integer array
+                int[] newArray = new int[number];
+                //Calls Populate method
+                Populate(newArray);
+                //Stores and Calls Methods
+                int returnSum = GetSum(newArray);
+                int returnProduct = GetProduct(newArray, returnSum);
+                decimal returnQuotient = GetQuotient(returnProduct);
+
+                Console.WriteLine($"Your Array is size:{newArray.Length}");
+                Console.WriteLine($"The numbers in the array are {string.Join(", ", (newArray))}");
+                Console.WriteLine($"The sum of the array is {returnSum}");
+                Console.WriteLine($"{returnSum} * {returnProduct / returnSum} = {returnProduct}");
+                Console.WriteLine($"{returnProduct} / {returnProduct / returnQuotient} = {returnQuotient}");
+            }
+            catch (FormatException)
+            {
+                throw;
+            }
+
+            catch (OverflowException)
+            {
+                throw;
+            }
 
 
         }//end of StartSequence
@@ -77,7 +95,7 @@ namespace NumbersGame
         {
             try
             {
-                Console.WriteLine($"Please select a random number between one and {array.Length}");
+                Console.WriteLine($"Please select a random number between 1 and {array.Length}");
                 string userResponse = Console.ReadLine();
                 int number = Convert.ToInt32(userResponse);
 
@@ -97,7 +115,7 @@ namespace NumbersGame
         {
             try
             {
-                Console.WriteLine($"Please enter a number to divide by {product}");
+                Console.WriteLine($"Please enter a number to divide {product} by");
                 string userResponse = Console.ReadLine();
                 int number = Convert.ToInt32(userResponse);
 
