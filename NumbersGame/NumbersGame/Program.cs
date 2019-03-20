@@ -6,13 +6,14 @@ namespace NumbersGame
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Numbers Game Yay! but lets break it");
+            Console.WriteLine("Numbers Game Yay!");
             try
             {
                 //StartSequence method called
                 StartSequence();
                 Console.WriteLine();
             }
+            //General Exeption
             catch (Exception e)
             {
                 Console.WriteLine("There was an error in your input");
@@ -23,11 +24,10 @@ namespace NumbersGame
                 Console.WriteLine("Application has run");
                 Console.ReadLine();
             }
-        } //end of Main
+        } 
+        //end of Main
 
-        /// <summary>
-        /// StartSequence method with logic
-        /// </summary>
+        // StartSequence method with logic
         static void StartSequence()
         {
             try
@@ -47,25 +47,27 @@ namespace NumbersGame
                 int returnProduct = GetProduct(newArray, returnSum);
                 decimal returnQuotient = GetQuotient(returnProduct);
 
+                //Prompts for each feature with Math for totals
                 Console.WriteLine($"Your Array is size:{newArray.Length}");
                 Console.WriteLine($"The numbers in the array are {string.Join(", ", (newArray))}");
                 Console.WriteLine($"The sum of the array is {returnSum}");
                 Console.WriteLine($"{returnSum} * {returnProduct / returnSum} = {returnProduct}");
                 Console.WriteLine($"{returnProduct} / {returnProduct / returnQuotient} = {returnQuotient}");
             }
+            //Format error
             catch (FormatException)
             {
                 throw;
             }
-
+            //Overflow error
             catch (OverflowException)
             {
                 throw;
             }
+        }
+        //end of StartSequence
 
-
-        }//end of StartSequence
-
+        //Method to iterate over an array from user input
         static int[] Populate(int[] array)
         {
             for (int i = 0; i < array.Length; i++)
@@ -76,8 +78,10 @@ namespace NumbersGame
                 array[i] = number;
             }
             return array;
-        }//end of Populate
+        }
+        //end of Populate
 
+        //Addition method
         static int GetSum(int[] array)
         {
             int sum = 0;
@@ -90,7 +94,9 @@ namespace NumbersGame
             }
             return sum;
         }
+        //end of method
 
+        //Multiplication Method
         static int GetProduct(int[] array, int sum)
         {
             try
@@ -107,9 +113,11 @@ namespace NumbersGame
             catch(IndexOutOfRangeException e)
             {
                 Console.WriteLine(e);
+                //Sends up to general Exception in Main method
                 throw;
             }
         }
+        //end of method
 
         static decimal GetQuotient(int product)
         {
@@ -130,6 +138,8 @@ namespace NumbersGame
                 return 0;
             }
         }
+        //end of method
         
-    }//end of class
+    }
+    //end of class
 }
